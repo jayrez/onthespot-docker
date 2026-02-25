@@ -1,9 +1,9 @@
 services:
   onthespot:
-    build: .
+    image: ghcr.io/jayrez/onthespot-docker:latest
     container_name: onthespot
     ports:
-      - "8083:5000" 
+      - "8083:5000" # Maps Host 8083 to Container 5000
     environment:
       - HOME=/config
       - OTS_CONFIG_PATH=/config
