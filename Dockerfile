@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-RUN git clone https://github.com/justin025/onthespot.git .
+RUN git clone https://github.com/jayrez/onthespot-dockerized.git .
 RUN pip install --no-cache-dir .
 
 # Create these at root level to match the volume mapping
