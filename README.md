@@ -1,6 +1,8 @@
+[![Build and Publish Docker Image](https://github.com/jayrez/onthespot-docker/actions/workflows/docker-publish.yml/badge.svg?event=push)](https://github.com/jayrez/onthespot-docker/actions/workflows/docker-publish.yml)
+
 # OnTheSpot Docker (Automated Build)
 
-A professional, containerized implementation of OnTheSpot by
+A containerized implementation of OnTheSpot by
 **justin025**.\
 This version utilizes GitHub Actions to automatically build and host the
 latest version for easy deployment.
