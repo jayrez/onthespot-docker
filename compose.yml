@@ -3,8 +3,11 @@ services:
     build: .
     container_name: onthespot
     ports:
-      - "8083:8083" 
+      - "8083:5000" 
+    environment:
+      - HOME=/config
+      - OTS_CONFIG_PATH=/config
     volumes:
-      - /julio/CasaContainers/plex_media/Media/Music/
-      - ./config:/app/config
+      - ./downloads:/downloads
+      - ./config:/config
     restart: unless-stopped

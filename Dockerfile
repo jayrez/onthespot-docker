@@ -7,10 +7,13 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 RUN git clone https://github.com/justin025/onthespot.git .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir .
 
-# Updated to 8083
-EXPOSE 8083
+# Create these at root level to match the volume mapping
+RUN mkdir /config /downloads
 
-# Force the Python script to use 8083
-CMD ["python3", "onthespot.py", "--web", "--host", "0.0.0.0", "--port", "8083"]
+# The app uses 5000 by default
+EXPOSE 5000
+
+# Force it to listen on 0.0.0.0 so we can access it from outside
+CMD ["python3", "-m", "onthespot.web", "--host", "0.0.0.0"]
