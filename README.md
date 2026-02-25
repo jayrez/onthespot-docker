@@ -23,7 +23,6 @@ This repository now features:
 
 ## 🛠 Quick Start (No Build Required)
 
-You no longer need to clone the whole repo to run the app.\
 Just create a `compose.yml` file and paste the following:
 
 ``` yaml
