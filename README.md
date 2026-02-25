@@ -31,13 +31,13 @@ services:
     image: ghcr.io/jayrez/onthespot-docker:latest
     container_name: onthespot
     ports:
-      - "8083:5000"
+      - "8083:5000" # Maps Host 8083 to Container 5000, change 8083 to whatever port you want
     environment:
       - HOME=/config
       - OTS_CONFIG_PATH=/config
     volumes:
+      - /path/to/your/music:/downloads
       - ./config:/config
-      - ./downloads:/downloads
     restart: unless-stopped
 ```
 
