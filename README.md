@@ -1,113 +1,108 @@
-# OnTheSpot Docker Web UI
+# OnTheSpot Docker (Automated Build)
 
-A streamlined Docker implementation for
-[OnTheSpot](https://github.com/justin025/onthespot), featuring a Web UI
-and persistent storage.
-
-## Credits & Motivation
-
-I am a big fan of the original [OnTheSpot project by
-justin025](https://github.com/jayrez/onthespot) and simply wanted to
-containerize it to make it more portable and easier to manage.
-
-**Full Disclosure:** While I have experience with Docker, I utilized AI
-assistance to troubleshoot specific pathing and persistence hurdles to
-ensure this implementation is as robust as possible for the community.
-
-## Features
-
--   **Persistent Sessions:** Your logins, cache, and settings stay saved
-    in the local `./config` folder.
--   **Web UI:** Accessible via browser on port `8083`.
--   **Simplified Deployment:** No need to manage Python environments on
-    your host machine.
-
-## Quick Start
-
-### 1) Clone the repository
-
-``` bash
-git clone https://github.com/jayrez/onthespot-docker.git
-cd onthespot-docker
-```
-
-### 2) Launch the container
-
-``` bash
-docker compose up -d
-```
-
-### 3) Access the interface
-
-Open your browser to: - http://localhost:8083\
-(or your server's IP)
+A professional, containerized implementation of OnTheSpot by
+**justin025**.\
+This version utilizes GitHub Actions to automatically build and host the
+latest version for easy deployment.
 
 ------------------------------------------------------------------------
 
-## Configuration & Volumes
+## 🚀 The Upgrade
 
-You can customize where your data is stored by editing the `compose.yml`
-file. You do not need to modify the Dockerfile to change your download
-location.
+This repository now features:
 
-  ------------------------------------------------------------------------
-  Host Path (Your Machine)             Container Path         Purpose
-  ------------------------------------ ---------------------- ------------
-  `./config`                           `/config`              Stores login
-                                                              tokens,
-                                                              database,
-                                                              and settings
-
-  `../downloads`                       `/downloads`           The
-                                                              directory
-                                                              for
-                                                              downloaded
-                                                              media
-  ------------------------------------------------------------------------
+-   **CI/CD Pipeline** --- Automatic builds via GitHub Actions\
+-   **Hosted Image** --- No local building required; pull directly from
+    `ghcr.io`\
+-   **Fork-Linked** --- Clones from a dedicated fork to ensure stability
+    and allow for custom improvements
 
 ------------------------------------------------------------------------
 
-## Mapping to a Different Folder
+## 🛠 Quick Start (No Build Required)
 
-If you want to save music to a specific location (like a NAS or external
-drive), simply change the left side of the volume mapping in
-`compose.yml`:
+You no longer need to clone the whole repo to run the app.\
+Just create a `compose.yml` file and paste the following:
 
 ``` yaml
-volumes:
-  - /path/to/your/big/drive:/downloads
+services:
+  onthespot:
+    image: ghcr.io/jayrez/onthespot-docker:latest
+    container_name: onthespot
+    ports:
+      - "8083:5000"
+    environment:
+      - HOME=/config
+      - OTS_CONFIG_PATH=/config
+    volumes:
+      - ./config:/config
+      - ./downloads:/downloads
+    restart: unless-stopped
 ```
 
-------------------------------------------------------------------------
-
-## Maintenance
-
-### Updating the App
-
-To pull the latest features from the upstream OnTheSpot repository and
-rebuild your image:
+Run it:
 
 ``` bash
-docker compose build --no-cache
 docker compose up -d
 ```
 
-### Resetting
+Access the UI at:
 
-To wipe the container and local images to start fresh:
+    http://your-ip:8083
+
+------------------------------------------------------------------------
+
+## 📂 Volumes & Persistence
+
+  -----------------------------------------------------------------------
+  Host Path               Container Path                Purpose
+  ----------------------- ----------------------------- -----------------
+  `./config`              `/config`                     Stores login
+                                                        tokens,
+                                                        databases, and
+                                                        app settings
+
+  `./downloads`           `/downloads`                  Directory where
+                                                        your media is
+                                                        saved
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## 🔄 Maintenance & Updates
+
+### Updating to the Latest Build
+
+Because the image is hosted on the GitHub Container Registry, updating
+is a single command:
 
 ``` bash
-docker compose down --rmi all --volumes
+docker compose pull && docker compose up -d
 ```
 
 ------------------------------------------------------------------------
 
-## Next Step
+## 👨‍💻 For Developers (The Pipeline)
 
-Since you mentioned being a fan of the project, you might eventually
-want to **fork** the original repo instead of just cloning it inside
-your Dockerfile. This would allow you to contribute code back to
-`justin025` if you ever fix a bug!
+If you want to modify the Docker configuration:
 
-Want to level this up further? The natural evolution is automated builds
-so your image stays fresh without manual rebuilds.
+1.  Edit the **Dockerfile** or `.github/workflows`
+2.  Push to `main`
+3.  GitHub Actions will automatically rebuild the image and update the
+    package at:
+
+```{=html}
+<!-- -->
+```
+    ghcr.io/jayrez/onthespot-docker
+
+------------------------------------------------------------------------
+
+## 🤝 Credits & Disclosure
+
+-   **Original App:** justin025/onthespot\
+-   **Infrastructure:** Developed with a focus on portability and
+    persistence\
+-   **Process:** Built using a "Fork-first" strategy and AI-assisted
+    CI/CD troubleshooting to ensure a robust, community-ready
+    implementation
