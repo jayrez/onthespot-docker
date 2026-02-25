@@ -1,0 +1,10 @@
+services:
+  onthespot:
+    build: .
+    container_name: onthespot
+    ports:
+      - "8083:8083" 
+    volumes:
+      - /julio/CasaContainers/plex_media/Media/Music/
+      - ./config:/app/config
+    restart: unless-stopped
