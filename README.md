@@ -63,7 +63,7 @@ Access the UI at:
                                                         databases, and
                                                         app settings
 
-  `./downloads`           `/downloads`                  Directory where
+  `/path/to/your/music`   `/downloads`                  Directory where
                                                         your media is
                                                         saved
   -----------------------------------------------------------------------
