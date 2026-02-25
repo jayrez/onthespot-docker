@@ -116,3 +116,11 @@ If you want to modify the Docker configuration:
 -   **Process:** Built using a "Fork-first" strategy and AI-assisted
     CI/CD troubleshooting to ensure a robust, community-ready
     implementation
+
+## Disclaimer
+
+OnTheSpot is intended to be used in compliance with DMCA, Section 1201, for educational, private and fair use.
+OnTheSpot contributors are not responsible for any misuse of the program or source code.
+
+------------------------------------------------------------------------
+For further information, please see the following [**disclaimer**]
