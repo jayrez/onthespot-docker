@@ -123,4 +123,4 @@ OnTheSpot is intended to be used in compliance with DMCA, Section 1201, for educ
 OnTheSpot contributors are not responsible for any misuse of the program or source code.
 
 ------------------------------------------------------------------------
-For further information, please see the following [**disclaimer**]
+For further information, please see the following [**disclaimer**](https://github.com/jayrez/onthespot-docker/blob/main/Disclaimer.md)
