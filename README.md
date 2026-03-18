@@ -69,7 +69,16 @@ Access the UI at:
   -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
+## ⚠️ Required App Configuration
 
+Once the container is running, you must update the internal path to match the Docker volume:
+
+1. Open the Web UI at `http://<your-ip>:8084`.
+2. Navigate to the **Settings** tab.
+3. Change the **Audio Download Path** to exactly: `/downloads`
+4. Save settings at the top of the page.
+
+------------------------------------------------------------------------
 ## 🔄 Maintenance & Updates
 
 ### Updating to the Latest Build
@@ -107,3 +116,5 @@ If you want to modify the Docker configuration:
 -   **Process:** Built using a "Fork-first" strategy and AI-assisted
     CI/CD troubleshooting to ensure a robust, community-ready
     implementation
+
+
