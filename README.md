@@ -31,13 +31,13 @@ services:
     image: ghcr.io/jayrez/onthespot-docker:latest
     container_name: onthespot
     ports:
-      - "8083:5000"
+      - "8083:5000" # Maps Host 8083 to Container 5000, change 8083 to whatever port you want
     environment:
       - HOME=/config
       - OTS_CONFIG_PATH=/config
     volumes:
+      - /path/to/your/music:/downloads
       - ./config:/config
-      - ./downloads:/downloads
     restart: unless-stopped
 ```
 
@@ -63,13 +63,21 @@ Access the UI at:
                                                         databases, and
                                                         app settings
 
-  `./downloads`           `/downloads`                  Directory where
+  `/path/to/your/music`   `/downloads`                  Directory where
                                                         your media is
                                                         saved
   -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 ## ⚠️ Required App Configuration
+
+Once the container is running, you must update the internal path to match the Docker volume:
+
+1. Open the Web UI at `http://<your-ip>:8084`.
+2. Navigate to the **Settings** tab.
+3. Change the **Audio Download Path** to exactly: `/downloads`
+4. Save settings at the top of the page.
+------------------------------------------------------------------------
 
 Once the container is running, you must update the internal path to match the Docker volume:
 
@@ -117,4 +125,14 @@ If you want to modify the Docker configuration:
     CI/CD troubleshooting to ensure a robust, community-ready
     implementation
 
+<<<<<<< HEAD
 
+=======
+## Disclaimer
+
+OnTheSpot is intended to be used in compliance with DMCA, Section 1201, for educational, private and fair use.
+OnTheSpot contributors are not responsible for any misuse of the program or source code.
+
+------------------------------------------------------------------------
+For further information, please see the following [**disclaimer**](https://github.com/jayrez/onthespot-docker/blob/main/Disclaimer.md)
+>>>>>>> 6c1e20032172c5e641ce2550b4e0f20447182a80
