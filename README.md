@@ -123,9 +123,7 @@ If you want to modify the Docker configuration:
     persistence\
 -   **Process:** Built using a "Fork-first" strategy and AI-assisted
     CI/CD troubleshooting to ensure a robust, community-ready
-    implementation
-
-<<<<<<< HEAD
+    implement
 
 =======
 ## Disclaimer
