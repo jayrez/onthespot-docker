@@ -1,13 +1,22 @@
 FROM python:3.11-slim
 
-RUN apt-get update && apt-get install -y \
+ARG ONTHESPOT_REPO=https://github.com/jayrez/onthespot-dockerized.git
+ARG ONTHESPOT_BRANCH=master
+
+ENV PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     git \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-RUN git clone https://github.com/jayrez/onthespot-dockerized.git .
-RUN pip install --no-cache-dir .
+RUN git clone --depth 1 --branch "${ONTHESPOT_BRANCH}" "${ONTHESPOT_REPO}" .
+
+RUN pip install --upgrade pip \
+    && pip install .
 
 # Create these at root level to match the volume mapping
 RUN mkdir /config /downloads
