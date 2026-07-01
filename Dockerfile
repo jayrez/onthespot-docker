@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 
 ARG ONTHESPOT_REPO=https://github.com/jayrez/onthespot-dockerized.git
-ARG ONTHESPOT_BRANCH=master
+ARG ONTHESPOT_BRANCH=search-filter-fix
 
 ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1
